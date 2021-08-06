@@ -1,3 +1,4 @@
+import 'package:carroflutter/telaabastecer.dart';
 import 'package:flutter/material.dart';
 import 'carro.dart';
 
@@ -7,6 +8,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => MyApp(),
+      'telaabastecer' : (context) => telaabastecer(),
     },
   ));
 }
@@ -20,9 +22,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Carro c = Carro();
-  double _kmRodados = 15;
-  double _abastecimento = 10;
-  double soma = 0;
+  double _kmRodados = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +31,6 @@ class _MyAppState extends State<MyApp> {
     void _locomoverCarro(){
       setState(() {
         c.locomoverCarro(_kmRodados);
-      });
-    }
-
-    void _abastecerCarro(){
-      setState(() {
-        c.abastecer(_abastecimento);
       });
     }
 
@@ -66,7 +61,7 @@ class _MyAppState extends State<MyApp> {
               ),
               Text('  '),
               ElevatedButton(
-                onPressed: (_abastecerCarro),
+                onPressed: () => Navigator.pushNamed(context, 'telaabastecer'),
                 child: Text("ABASTECER", style: TextStyle(fontSize: 18),),
               ),
             ],
